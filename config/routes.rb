@@ -6,6 +6,7 @@ Rails.application.routes.draw do
    resources :account_activations, only: [:edit]
    resources :password_resets,     only: [:new, :create, :edit, :update]
    resources :microposts,          only: [:create, :destroy]
+   resources :relationships,       only: [:create, :destroy]
   get 'users/new'
   root 'static_pages#home'
   get  '/help', to: 'static_pages#help'
@@ -17,6 +18,11 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   root 'static_pages#home'
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 resources :microposts
 
   root 'users#index'
