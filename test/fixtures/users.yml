@@ -2,3 +2,9 @@ harika:
   name: harika
   email: harikagoruganthu13@gmail.com
   password_digest: <%= User.digest('password') %>
+
+harikagsn:
+  name: harikagsn
+  email: harika@gmail.com
+  password_digest: <%= User.digest('password') %>
+  admin: true
